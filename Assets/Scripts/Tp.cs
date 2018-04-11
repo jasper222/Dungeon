@@ -11,11 +11,12 @@ public class Globe
 public class Tp : MonoBehaviour {
 
     public GameObject player;
-    public GameObject  camera;
+    public string NextStage;
+    //public GameObject  camera;
     // Use this for initialization
     void Start () {
         DontDestroyOnLoad(player);
-        DontDestroyOnLoad(camera);
+        //DontDestroyOnLoad(camera);
         //Object[] initsObjects = GameObject.FindObjectsOfType(typeof(GameObject));
         //foreach (Object go in initsObjects)
         //{
@@ -31,7 +32,7 @@ public class Tp : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadSceneAsync("Stage2");
+            SceneManager.LoadSceneAsync(NextStage);
             
         }
     }

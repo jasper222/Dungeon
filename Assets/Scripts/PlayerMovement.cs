@@ -10,14 +10,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rg3d;
     private Vector3 movement;
     private bool isOnGround = true;
-    private ConstantForce constantforce;
+    //private ConstantForce constantforce;
 
     // Use this for initialization
     void Start()
     {
         movement = new Vector3(0f, 0f, 0f); 
         rg3d = GetComponent<Rigidbody>();
-        constantforce = GetComponent<ConstantForce>();
+        //constantforce = GetComponent<ConstantForce>();
     }
 
     // Update is called once per frame
@@ -28,8 +28,9 @@ public class PlayerMovement : MonoBehaviour
             float moveX = Input.GetAxis("Horizontal");
             float moveZ = Input.GetAxis("Vertical");
             movement = new Vector3(moveX, 0f, moveZ);
+            rg3d.AddForce(movement * speed);
         }
-        rg3d.AddForce(movement * speed);
+        
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -53,6 +54,14 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isOnGround = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Tp"))
+        {
+            rg3d.velocity = new Vector3(0f, 0f, 0f);
         }
     }
 }
