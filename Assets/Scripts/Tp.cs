@@ -16,6 +16,8 @@ public class Tp : MonoBehaviour {
     // Use this for initialization
     void Start () {
         DontDestroyOnLoad(player);
+        GameObject ui = GameObject.Find("MessageUI");
+        DontDestroyOnLoad(ui);
         //DontDestroyOnLoad(camera);
         //Object[] initsObjects = GameObject.FindObjectsOfType(typeof(GameObject));
         //foreach (Object go in initsObjects)
