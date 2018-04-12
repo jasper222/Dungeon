@@ -10,14 +10,12 @@ public class Globe
 }
 public class Tp : MonoBehaviour {
 
-    public GameObject player;
     public string NextStage;
 
     void Start () {
         //DontDestroyOnLoad(player);
         GameObject ui = GameObject.Find("MessageUI");
         DontDestroyOnLoad(ui);
-
     }
 	
 
@@ -29,7 +27,6 @@ public class Tp : MonoBehaviour {
         if (other.gameObject.CompareTag("Player"))
         {
             SceneManager.LoadSceneAsync(NextStage);
-            
         }
     }
 }
