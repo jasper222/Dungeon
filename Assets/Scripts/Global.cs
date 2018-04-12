@@ -9,6 +9,7 @@ public class Global : MonoBehaviour {
 	void Start () {
     GameObject player = GameObject.Find("Player");
         player.transform.position = point;
+
 	}
 	
 	// Update is called once per frame
