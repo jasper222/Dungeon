@@ -37,11 +37,18 @@ public class PlayerMovement : MonoBehaviour
             movement = new Vector3(moveX, 0f, moveZ);
             rg3d.velocity = 2 * movement;
         }
-        
+        else if (GroundType == 3)
+        {
+            float moveX = Input.GetAxis("Horizontal");
+            float moveZ = Input.GetAxis("Vertical");
+            movement = new Vector3(-moveX, 0f, -moveZ);
+            rg3d.AddForce(movement * speed);
+        }
+
 
         if (Input.GetKey(KeyCode.Space))
         {
-            if(GroundType == 1 || GroundType == 2)
+            if(GroundType == 1 || GroundType == 2 || GroundType == 3)
             {
                 rg3d.velocity = new Vector3(rg3d.velocity.x, jumpspeed + 0.0001f, rg3d.velocity.z);
             }
@@ -58,6 +65,10 @@ public class PlayerMovement : MonoBehaviour
         {
             GroundType = 2;
         }
+        else if (other.gameObject.CompareTag("GroundRed"))
+        {
+            GroundType = 3;
+        }
     }
 
     private void OnCollisionExit(Collision other)
@@ -67,6 +78,10 @@ public class PlayerMovement : MonoBehaviour
             GroundType = 0;
         }
         else if (other.gameObject.CompareTag("GroundBlue"))
+        {
+            GroundType = 0;
+        }
+        else if(other.gameObject.CompareTag("GroundRed"))
         {
             GroundType = 0;
         }

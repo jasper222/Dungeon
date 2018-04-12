@@ -8,6 +8,7 @@ TagManager:
   - Tp
   - GameOver
   - GroundBlue
+  - GroundRed
   layers:
   - Default
   - TransparentFX
