@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hit : MonoBehaviour {
     public string Hitname;
+    public int health;
     Rigidbody rig;
 	// Use this for initialization
 	void Start () {
@@ -33,16 +34,26 @@ public class Hit : MonoBehaviour {
             rig = enemy_2.GetComponent<Rigidbody>();
             rig.velocity = new Vector3(0, 0, -2);
 
-            Destroy(this);
+            GameObject obj = GameObject.Find("Gate");
+            Bridge bridge_s = obj.GetComponent<Bridge>();
+            bridge_s.Appear();
+            this.gameObject.SetActive(false);
+            //Destroy(this, 0f);
         }
         
     }
 
     public void Enemy_hit()
     {
+        Hitname = this.name;
         if (Hitname.Contains("enemy"))
         {
-
+            health--;
+        }
+        if (health==0)
+        {
+            this.gameObject.SetActive(false);
+            //Destroy(this, 0f);
         }
     }
 }
