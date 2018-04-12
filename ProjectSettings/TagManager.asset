@@ -9,6 +9,7 @@ TagManager:
   - GameOver
   - GroundBlue
   - GroundRed
+  - Hit
   layers:
   - Default
   - TransparentFX

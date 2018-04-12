@@ -64,10 +64,19 @@ public class PlayerShooting : MonoBehaviour {
 
         if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
         {
-            gunLine.SetPosition(1, shootHit.point);
-            GameObject obj = shootHit.collider.gameObject;
            
-            OpentheDoor target = shootHit.collider.GetComponent<OpentheDoor>();
+            gunLine.SetPosition(1, shootHit.point);
+            if (shootHit.collider.CompareTag("Hit"))
+            {
+                Hit obj = shootHit.collider.GetComponent<Hit>();
+                obj.Hitting();
+            }
+            if (shootHit.collider.name.Contains("enemy"))
+            {
+                Hit obj = shootHit.collider.GetComponent<Hit>();
+                obj.Enemy_hit();
+            }
+           
             
         }
         else
