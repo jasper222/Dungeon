@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OpentheDoor : MonoBehaviour {
-    GameObject Wall;
-    GameObject bridge;
+    public string type;
+    GameObject trigger;
     // Use this for initialization
     void Start () {
-        //Wall = GameObject.Find("Wall");
-        bridge = GameObject.Find("Bridge");
+        trigger = GameObject.Find(type);
     }
 	
 	// Update is called once per frame
@@ -19,10 +18,12 @@ public class OpentheDoor : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //Wall.SetActive(false);
-
-            Bridge bridge_s = bridge.GetComponent<Bridge>();
-            bridge_s.Appear();
+            if(type.Contains("Bridge"))
+            {
+                Bridge bridge_s = trigger.GetComponent<Bridge>();
+                bridge_s.Appear();
+            }
+            
         }
     }
 }
