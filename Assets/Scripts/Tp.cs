@@ -15,7 +15,7 @@ public class Tp : MonoBehaviour {
     //public GameObject  camera;
     // Use this for initialization
     void Start () {
-        DontDestroyOnLoad(player);
+        //DontDestroyOnLoad(player);
         GameObject ui = GameObject.Find("MessageUI");
         DontDestroyOnLoad(ui);
         //DontDestroyOnLoad(camera);
