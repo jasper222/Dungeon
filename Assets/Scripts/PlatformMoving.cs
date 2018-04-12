@@ -7,20 +7,22 @@ public class PlatformMoving : MonoBehaviour {
     public Vector3 movement;
     public float speed = 5f;
     private Vector3 startpos;
+    private Vector3 endpos;
     private int dir;
 	// Use this for initialization
 	void Start () {
         dir = 1;
         startpos = transform.position;
+        endpos = startpos + movement;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if(transform.position ==  startpos + movement)
+        if(transform.position.z > endpos.z)
         {
             dir = 2;
         }
-        else if(transform.position == startpos)
+        else if(transform.position.z < startpos.z)
         {
             dir = 1;
         }
@@ -31,7 +33,7 @@ public class PlatformMoving : MonoBehaviour {
         }
         else if(dir == 2)
         {
-            transform.position = Vector3.Lerp(transform.position, startpos, speed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, transform.position - movement, speed * Time.deltaTime);
         }
 	}
 }
