@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 811112659}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Tp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -474,7 +474,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 952446599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.69, y: 0.1, z: 12.51}
+  m_LocalPosition: {x: -5.41, y: 0, z: 12.51}
   m_LocalScale: {x: 3, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 910699454}
@@ -544,6 +544,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1eb6f3eb315e46b9086276194366b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetpos: {x: -5.41, y: 0, z: 12.51}
+  smoothing: 1
 --- !u!1 &980121912
 GameObject:
   m_ObjectHideFlags: 0

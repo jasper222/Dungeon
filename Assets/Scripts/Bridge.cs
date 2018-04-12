@@ -19,7 +19,8 @@ public class Bridge : MonoBehaviour {
     {
         if (locks==1)
         {
-            bridge.transform.position = Vector3.Lerp(bridge.transform.position, targetpos, smoothing * Time.deltaTime);
+            Vector3 vec = targetpos - bridge.transform.position;
+            bridge.transform.position = Vector3.Lerp(bridge.transform.position, vec, smoothing * Time.deltaTime);
             
         }
         
