@@ -57,11 +57,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.CompareTag("Tp"))
+        if (other.gameObject.CompareTag("GameOver"))
         {
-            rg3d.velocity = new Vector3(0f, 0f, 0f);
+            GameObject gameoverUI = GameObject.Find("GameOverUI");
+            Animator anim;
+            anim = gameoverUI.GetComponent<Animator>();
+            anim.SetTrigger("GameOverTrigger");
         }
     }
+
+
 }

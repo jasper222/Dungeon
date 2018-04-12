@@ -7,9 +7,11 @@ public class Global : MonoBehaviour {
    
 	// Use this for initialization
 	void Start () {
-    GameObject player = GameObject.Find("Player");
+        Object playerperfab = Resources.Load("Perfabs/Player", typeof(GameObject));
+        GameObject player = Instantiate(playerperfab) as GameObject;
         player.transform.position = point;
-	}
+        player.name = "Player";
+    }
 	
 	// Update is called once per frame
 	void Update () {
