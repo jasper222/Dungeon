@@ -68,11 +68,5 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.CompareTag("Tp"))
-        {
-            rg3d.velocity = new Vector3(0f, 0f, 0f);
-        }
-    }
+
 }
