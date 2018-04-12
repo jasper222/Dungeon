@@ -11,7 +11,7 @@ public class Bridge : MonoBehaviour {
     // Use this for initialization
     void Start () {
         bridge = GameObject.Find("Bridge");
-        bridge.transform.Translate(0, -10, 0);
+        bridge.transform.position = new Vector3(-5.41f, -10f, 12.51f);
     }
 	
 	// Update is called once per frame
@@ -19,7 +19,8 @@ public class Bridge : MonoBehaviour {
     {
         if (locks==1)
         {
-            bridge.transform.position = Vector3.Lerp(bridge.transform.position, targetpos, smoothing * Time.deltaTime);
+            Vector3 vec = targetpos;
+            bridge.transform.position = Vector3.Lerp(bridge.transform.position, vec, smoothing * Time.deltaTime);
             
         }
         
