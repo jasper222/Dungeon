@@ -28,7 +28,7 @@ public class MovingFriction : MonoBehaviour {
         }
         if(flag == 1)
         {
-            PlayerRg3d.AddForce((thisRg3d.velocity - PlayerRg3d.velocity) * 7);
+            PlayerRg3d.AddForce((thisRg3d.velocity - PlayerRg3d.velocity) * 5);
         }
     }
 

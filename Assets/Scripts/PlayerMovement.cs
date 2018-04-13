@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -92,10 +94,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("GameOver"))
         {
             other.gameObject.SetActive(false);
-            GameObject gameoverUI = GameObject.Find("GameOverUI");
-            Animator anim;
-            anim = gameoverUI.GetComponent<Animator>();
-            anim.SetTrigger("GameOverTrigger");
+            PlayerDie();
         }
     }
 
@@ -104,12 +103,41 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("GameOver"))
         {
             other.gameObject.SetActive(false);
-            GameObject gameoverUI = GameObject.Find("GameOverUI");
-            Animator anim;
-            anim = gameoverUI.GetComponent<Animator>();
-            anim.SetTrigger("GameOverTrigger");
+            PlayerDie();
         }
     }
 
+    void PlayerDie()
+    {
+        if(HealthManage.LiveOrNot)
+        {
+            HealthManage.LiveOrNot = false;
+            HealthManage.PlayerHealth--;
+            StartCoroutine(ReloadScene());
+        }
+    }
+
+    IEnumerator ReloadScene()
+    {
+        GameObject gameoverUI = GameObject.Find("GameOverUI");
+        GameObject healthpoint = GameObject.Find("HealthPoint");
+        healthpoint.GetComponent<Text>().text = HealthManage.PlayerHealth.ToString();
+        Animator anim;
+        anim = gameoverUI.GetComponent<Animator>();
+        anim.SetTrigger("GameOverTrigger");
+        yield return new WaitForSeconds(2.0f);
+        anim.SetTrigger("GameOverTrigger");
+        yield return new WaitForSeconds(1.0f);
+        if (HealthManage.PlayerHealth == 0)
+        {
+            SceneManager.LoadSceneAsync("Stage1");
+            HealthManage.PlayerHealth = HealthManage.BeginningHealth;
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        }
+        HealthManage.LiveOrNot = true;
+    }
 
 }
