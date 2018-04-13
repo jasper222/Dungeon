@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour {
@@ -64,10 +65,26 @@ public class PlayerShooting : MonoBehaviour {
 
         if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
         {
-            gunLine.SetPosition(1, shootHit.point);
-            GameObject obj = shootHit.collider.gameObject;
            
-            OpentheDoor target = shootHit.collider.GetComponent<OpentheDoor>();
+            gunLine.SetPosition(1, shootHit.point);
+            if (shootHit.collider.CompareTag("Hit"))
+            {
+                if(SceneManager.GetActiveScene().name == "Stage2" || SceneManager.GetActiveScene().name == "Stage3")
+                {
+                    HitStage2to4 obj = shootHit.collider.GetComponent<HitStage2to4>();
+                    obj.Hitting();
+                } 
+            }
+            if (shootHit.collider.name.Contains("enemy"))
+            {
+                if(SceneManager.GetActiveScene().name == "Stage2" || SceneManager.GetActiveScene().name == "Stage3")
+                {
+                    HitStage2to4 obj = shootHit.collider.GetComponent<HitStage2to4>();
+                    obj.Enemy_hit();
+                }
+                
+            }
+           
             
         }
         else
