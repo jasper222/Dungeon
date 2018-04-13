@@ -14,8 +14,8 @@ public class Tp : MonoBehaviour {
 
     void Start () {
         //DontDestroyOnLoad(player);
-        GameObject ui = GameObject.Find("MessageUI");
-        DontDestroyOnLoad(ui);
+        //GameObject ui = GameObject.Find("MessageUI");
+        //DontDestroyOnLoad(ui);
     }
 	
 

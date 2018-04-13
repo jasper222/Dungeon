@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(GroundType == 1)
+        if (GroundType == 1)
         {
             float moveX = Input.GetAxis("Horizontal");
             float moveZ = Input.GetAxis("Vertical");
@@ -50,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(GroundType == 1 || GroundType == 2 || GroundType == 3)
             {
-                rg3d.velocity = new Vector3(rg3d.velocity.x, jumpspeed + 0.0001f, rg3d.velocity.z);
+                rg3d.velocity = new Vector3(rg3d.velocity.x, jumpspeed, rg3d.velocity.z);
             }
         }
     }
@@ -87,16 +89,55 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("GameOver"))
+        {
+            other.gameObject.SetActive(false);
+            PlayerDie();
+        }
+    }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("GameOver"))
         {
-            GameObject gameoverUI = GameObject.Find("GameOverUI");
-            Animator anim;
-            anim = gameoverUI.GetComponent<Animator>();
-            anim.SetTrigger("GameOverTrigger");
+            other.gameObject.SetActive(false);
+            PlayerDie();
         }
     }
 
+    void PlayerDie()
+    {
+        if(HealthManage.LiveOrNot)
+        {
+            HealthManage.LiveOrNot = false;
+            HealthManage.PlayerHealth--;
+            StartCoroutine(ReloadScene());
+        }
+    }
+
+    IEnumerator ReloadScene()
+    {
+        GameObject gameoverUI = GameObject.Find("GameOverUI");
+        GameObject healthpoint = GameObject.Find("HealthPoint");
+        healthpoint.GetComponent<Text>().text = "× " + HealthManage.PlayerHealth.ToString();
+        Animator anim;
+        anim = gameoverUI.GetComponent<Animator>();
+        anim.SetTrigger("GameOverTrigger");
+        yield return new WaitForSeconds(2.0f);
+        anim.SetTrigger("GameOverTrigger");
+        yield return new WaitForSeconds(1.0f);
+        if (HealthManage.PlayerHealth == 0)
+        {
+            SceneManager.LoadSceneAsync("Stage1");
+            HealthManage.PlayerHealth = HealthManage.BeginningHealth;
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        }
+        HealthManage.LiveOrNot = true;
+    }
 
 }

@@ -27,8 +27,4 @@ public class OpentheDoor : MonoBehaviour {
         }
     }
 
-    public void Hitted()
-    {
-
-    }
 }
