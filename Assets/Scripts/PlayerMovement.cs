@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(GroundType == 1)
+        if (GroundType == 1)
         {
             float moveX = Input.GetAxis("Horizontal");
             float moveZ = Input.GetAxis("Vertical");
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(GroundType == 1 || GroundType == 2 || GroundType == 3)
             {
-                rg3d.velocity = new Vector3(rg3d.velocity.x, jumpspeed + 0.0001f, rg3d.velocity.z);
+                rg3d.velocity = new Vector3(rg3d.velocity.x, jumpspeed, rg3d.velocity.z);
             }
         }
     }
@@ -87,10 +87,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("GameOver"))
+        {
+            other.gameObject.SetActive(false);
+            GameObject gameoverUI = GameObject.Find("GameOverUI");
+            Animator anim;
+            anim = gameoverUI.GetComponent<Animator>();
+            anim.SetTrigger("GameOverTrigger");
+        }
+    }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("GameOver"))
         {
+            other.gameObject.SetActive(false);
             GameObject gameoverUI = GameObject.Find("GameOverUI");
             Animator anim;
             anim = gameoverUI.GetComponent<Animator>();

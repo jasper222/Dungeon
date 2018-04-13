@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour {
@@ -68,17 +69,17 @@ public class PlayerShooting : MonoBehaviour {
             gunLine.SetPosition(1, shootHit.point);
             if (shootHit.collider.CompareTag("Hit"))
             {
-                if(Application.loadedLevelName == "Stage2")
+                if(SceneManager.GetActiveScene().name == "Stage2" || SceneManager.GetActiveScene().name == "Stage3")
                 {
-                    HitStage2 obj = shootHit.collider.GetComponent<HitStage2>();
+                    HitStage2to4 obj = shootHit.collider.GetComponent<HitStage2to4>();
                     obj.Hitting();
                 } 
             }
             if (shootHit.collider.name.Contains("enemy"))
             {
-                if(Application.loadedLevelName == "Stage2")
+                if(SceneManager.GetActiveScene().name == "Stage2" || SceneManager.GetActiveScene().name == "Stage3")
                 {
-                    HitStage2 obj = shootHit.collider.GetComponent<HitStage2>();
+                    HitStage2to4 obj = shootHit.collider.GetComponent<HitStage2to4>();
                     obj.Enemy_hit();
                 }
                 
