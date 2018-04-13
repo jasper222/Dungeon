@@ -8,7 +8,7 @@ public class GetHealth : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         GameObject healthpoint = GameObject.Find("HealthPoint");
-        healthpoint.GetComponent<Text>().text = HealthManage.PlayerHealth.ToString();
+        healthpoint.GetComponent<Text>().text = "× " + HealthManage.PlayerHealth.ToString();
     }
 	
 	// Update is called once per frame

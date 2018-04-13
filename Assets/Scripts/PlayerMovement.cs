@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
     {
         GameObject gameoverUI = GameObject.Find("GameOverUI");
         GameObject healthpoint = GameObject.Find("HealthPoint");
-        healthpoint.GetComponent<Text>().text = HealthManage.PlayerHealth.ToString();
+        healthpoint.GetComponent<Text>().text = "× " + HealthManage.PlayerHealth.ToString();
         Animator anim;
         anim = gameoverUI.GetComponent<Animator>();
         anim.SetTrigger("GameOverTrigger");
