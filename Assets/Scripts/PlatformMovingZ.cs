@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformMoving : MonoBehaviour {
+public class PlatformMovingZ : MonoBehaviour {
 
     public Vector3 movement;
     public float speed = 5f;

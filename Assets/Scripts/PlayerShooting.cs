@@ -68,13 +68,20 @@ public class PlayerShooting : MonoBehaviour {
             gunLine.SetPosition(1, shootHit.point);
             if (shootHit.collider.CompareTag("Hit"))
             {
-                Hit obj = shootHit.collider.GetComponent<Hit>();
-                obj.Hitting();
+                if(Application.loadedLevelName == "Stage2")
+                {
+                    HitStage2 obj = shootHit.collider.GetComponent<HitStage2>();
+                    obj.Hitting();
+                } 
             }
             if (shootHit.collider.name.Contains("enemy"))
             {
-                Hit obj = shootHit.collider.GetComponent<Hit>();
-                obj.Enemy_hit();
+                if(Application.loadedLevelName == "Stage2")
+                {
+                    HitStage2 obj = shootHit.collider.GetComponent<HitStage2>();
+                    obj.Enemy_hit();
+                }
+                
             }
            
             
