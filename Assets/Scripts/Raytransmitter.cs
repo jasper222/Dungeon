@@ -8,6 +8,7 @@ public class Raytransmitter : MonoBehaviour {
     public float range = 100f;
     public Vector3 dir;
     public float speed;
+    public int model;
     float timer;
     Ray shootRay = new Ray();
     RaycastHit shootHit;
@@ -22,24 +23,26 @@ public class Raytransmitter : MonoBehaviour {
         timer = 0f;
         gunLine = GetComponent<LineRenderer>();
         shootableMask = LayerMask.GetMask("Default");
-        gunLine.SetColors(Color.black, Color.yellow);
-
 
     }
 	
 	// Update is called once per frame
 	void Update () {
         timer += Time.deltaTime;
-        if (timer>=Interval)
+        if (timer>=Interval && model==1)
         {
             gunLine.enabled = false;
             Shoot();
             DisableEffects();
         }
-        else if (timer>=Interval/2)
+        if (timer>=Interval/2 && model==0)
         {
-            gunLine.enabled = false;
+
             Aiming();
+        }
+        if (timer>=Interval && model==0)
+        {
+            DisableEffects();
         }
     }
     void DisableEffects()
@@ -61,19 +64,19 @@ public class Raytransmitter : MonoBehaviour {
 
     void Aiming()
     {
-        var colorbegin = Color.white;
-        var colorend = new Color(1, timer / 2, 1, 1);
-
-        
         gunLine.enabled = true;
         gunLine.SetPosition(0, transform.position);
         shootRay.origin = transform.position;
-        shootRay.direction = transform.forward;
+        shootRay.direction = dir;
         if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
         {
 
             gunLine.SetPosition(1, shootHit.point);
-
+            if (shootHit.collider.tag=="player")
+            {
+                PlayerMovement obj = shootHit.collider.GetComponent<PlayerMovement>();
+                obj.PlayerDie();
+            }
         }
         else
         {
