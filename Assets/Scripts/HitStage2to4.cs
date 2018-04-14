@@ -51,7 +51,7 @@ public class HitStage2to4 : MonoBehaviour {
         {
             health--;
         }
-        if (health==0)
+        if (health == 0)
         {
             this.gameObject.SetActive(false);
         }

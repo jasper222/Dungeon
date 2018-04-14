@@ -93,7 +93,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GameOver"))
         {
-            other.gameObject.SetActive(false);
             PlayerDie();
         }
     }
@@ -102,7 +101,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GameOver"))
         {
-            other.gameObject.SetActive(false);
             PlayerDie();
         }
     }
