@@ -5,13 +5,9 @@ using UnityEngine;
 public class RotatingBridge : MonoBehaviour {
 
     public float speed = 20f;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
+    public Vector3 dir;
+
 	void FixedUpdate () {
-        transform.Rotate(Vector3.up, speed * Time.deltaTime);
+        transform.Rotate(dir, speed * Time.deltaTime);
     }
 }
