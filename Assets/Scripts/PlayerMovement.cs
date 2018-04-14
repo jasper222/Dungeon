@@ -38,14 +38,14 @@ public class PlayerMovement : MonoBehaviour
             float moveX = Input.GetAxis("Horizontal");
             float moveZ = Input.GetAxis("Vertical");
             movement = new Vector3(moveX, 0f, moveZ);
-            rg3d.velocity = 2 * movement;
+            rg3d.velocity = 2.1f * movement;
         }
         else if (GroundType == 3)
         {
             float moveX = Input.GetAxis("Horizontal");
             float moveZ = Input.GetAxis("Vertical");
             movement = new Vector3(-moveX, 0f, -moveZ);
-            rg3d.AddForce(movement * speed);
+            rg3d.AddForce(movement * speed * 0.7f);
         }
 
         if(Input.GetKey(KeyCode.LeftShift) && GroundType != 0)
