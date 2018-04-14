@@ -11,18 +11,19 @@ public class PlayerMovement : MonoBehaviour
     public float jumpspeed;
     private Rigidbody rg3d;
     private Vector3 movement;
-    private int GroundType = 1;
+    private int GroundType;
     //private ConstantForce constantforce;
 
-    // Use this for initialization
+
     void Start()
     {
+        GroundType = 0;
         movement = new Vector3(0f, 0f, 0f); 
         rg3d = GetComponent<Rigidbody>();
         //constantforce = GetComponent<ConstantForce>();
     }
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         if (GroundType == 1)
@@ -37,13 +38,19 @@ public class PlayerMovement : MonoBehaviour
             float moveX = Input.GetAxis("Horizontal");
             float moveZ = Input.GetAxis("Vertical");
             movement = new Vector3(moveX, 0f, moveZ);
-            rg3d.velocity = 2 * movement;
+            rg3d.velocity = 2.1f * movement;
         }
         else if (GroundType == 3)
         {
             float moveX = Input.GetAxis("Horizontal");
             float moveZ = Input.GetAxis("Vertical");
             movement = new Vector3(-moveX, 0f, -moveZ);
+            rg3d.AddForce(movement * speed * 0.7f);
+        }
+
+        if(Input.GetKey(KeyCode.LeftShift) && GroundType != 0)
+        {
+            movement = new Vector3(0f, -15f, 0f);
             rg3d.AddForce(movement * speed);
         }
 
@@ -66,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         else if(other.gameObject.CompareTag("GroundBlue"))
         {
             GroundType = 2;
+            rg3d.useGravity = false;
         }
         else if (other.gameObject.CompareTag("GroundRed"))
         {
@@ -82,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         else if (other.gameObject.CompareTag("GroundBlue"))
         {
             GroundType = 0;
+            rg3d.useGravity = true;
         }
         else if(other.gameObject.CompareTag("GroundRed"))
         {
@@ -93,7 +102,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GameOver"))
         {
-            other.gameObject.SetActive(false);
             PlayerDie();
         }
     }
@@ -102,12 +110,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GameOver"))
         {
-            other.gameObject.SetActive(false);
             PlayerDie();
         }
     }
 
-    void PlayerDie()
+    public void PlayerDie()
     {
         if(HealthManage.LiveOrNot)
         {
@@ -135,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            ItemManage.PassOrReStart = false;
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         }
         HealthManage.LiveOrNot = true;
