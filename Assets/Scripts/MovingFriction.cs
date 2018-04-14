@@ -11,7 +11,6 @@ public class MovingFriction : MonoBehaviour {
     void Start () {
         flag = 0;
         player = GameObject.Find("Player");
-        PlayerRg3d = player.GetComponent<Rigidbody>();
         thisRg3d = GetComponent<Rigidbody>();
     }
 	
@@ -28,7 +27,7 @@ public class MovingFriction : MonoBehaviour {
         }
         if(flag == 1)
         {
-            PlayerRg3d.AddForce((thisRg3d.velocity - PlayerRg3d.velocity) * 7);
+            PlayerRg3d.AddForce((thisRg3d.velocity - PlayerRg3d.velocity) * 5);
         }
     }
 
