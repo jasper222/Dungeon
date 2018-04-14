@@ -10,12 +10,9 @@ public class Global : MonoBehaviour {
 	void Start ()
     {
         LoadPlayer();
-        if(ItemManage.PassOrReStart)
+        if (SceneManager.GetActiveScene().name == "Stage4")
         {
-            if (SceneManager.GetActiveScene().name == "Stage4")
-            {
-                ItemManage.LoadItemStage4();
-            }
+            ItemManage.LoadItemStage4();
         }
     }
 

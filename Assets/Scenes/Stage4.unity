@@ -1824,7 +1824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb2f23860c8968429d94dc0785d52b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: {x: 28, y: 0.65, z: 0}
+  point: {x: 28, y: 0.65, z: 18}
 --- !u!4 &810354052
 Transform:
   m_ObjectHideFlags: 0
@@ -4497,10 +4497,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1393321817976278, guid: e7dc3584fa30d2d419a64457546b5756, type: 2}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7dc3584fa30d2d419a64457546b5756, type: 2}
