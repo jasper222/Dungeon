@@ -11,12 +11,13 @@ public class PlayerMovement : MonoBehaviour
     public float jumpspeed;
     private Rigidbody rg3d;
     private Vector3 movement;
-    private int GroundType = 1;
+    private int GroundType;
     //private ConstantForce constantforce;
 
     // Use this for initialization
     void Start()
     {
+        GroundType = 0;
         movement = new Vector3(0f, 0f, 0f); 
         rg3d = GetComponent<Rigidbody>();
         //constantforce = GetComponent<ConstantForce>();
@@ -47,6 +48,12 @@ public class PlayerMovement : MonoBehaviour
             rg3d.AddForce(movement * speed);
         }
 
+        if(Input.GetKey(KeyCode.LeftShift) && GroundType != 0)
+        {
+            movement = new Vector3(0f, -15f, 0f);
+            rg3d.AddForce(movement * speed);
+        }
+
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -66,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         else if(other.gameObject.CompareTag("GroundBlue"))
         {
             GroundType = 2;
+            rg3d.useGravity = false;
         }
         else if (other.gameObject.CompareTag("GroundRed"))
         {
@@ -82,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         else if (other.gameObject.CompareTag("GroundBlue"))
         {
             GroundType = 0;
+            rg3d.useGravity = true;
         }
         else if(other.gameObject.CompareTag("GroundRed"))
         {
