@@ -72,7 +72,7 @@ public class Raytransmitter : MonoBehaviour {
         {
 
             gunLine.SetPosition(1, shootHit.point);
-            if (shootHit.collider.tag=="player")
+            if (shootHit.collider.CompareTag("Player"))
             {
                 PlayerMovement obj = shootHit.collider.GetComponent<PlayerMovement>();
                 obj.PlayerDie();
