@@ -3,29 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Globe
-{
-    //在这里记录当前切换场景的名称
-    public static string loadName;
-}
 public class Tp : MonoBehaviour {
-
+    public string loadName;
     public string NextStage;
-
-    void Start () {
-        //DontDestroyOnLoad(player);
-        //GameObject ui = GameObject.Find("MessageUI");
-        //DontDestroyOnLoad(ui);
-    }
 	
-
-	void Update () {
-		
-	}
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            ItemManage.PassOrReStart = true;
             SceneManager.LoadSceneAsync(NextStage);
         }
     }

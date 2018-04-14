@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private int GroundType;
     //private ConstantForce constantforce;
 
-    // Use this for initialization
+
     void Start()
     {
         GroundType = 0;
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         //constantforce = GetComponent<ConstantForce>();
     }
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         if (GroundType == 1)
@@ -142,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            ItemManage.PassOrReStart = false;
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         }
         HealthManage.LiveOrNot = true;
