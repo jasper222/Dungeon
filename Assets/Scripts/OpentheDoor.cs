@@ -23,8 +23,19 @@ public class OpentheDoor : MonoBehaviour {
                 Bridge bridge_s = trigger.GetComponent<Bridge>();
                 bridge_s.Appear();
             }
-            
+            if(type.Contains("ComponentEnable"))
+            {
+                ComponentEnable componentenable = trigger.GetComponent<ComponentEnable>();
+                componentenable.UnLock();
+            }
+            StartCoroutine(EnableEffect());
         }
+    }
+
+    IEnumerator EnableEffect()
+    {
+        yield return new WaitForSeconds(0.5f);
+        this.gameObject.SetActive(false);
     }
 
 }

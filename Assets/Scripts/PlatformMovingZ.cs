@@ -36,11 +36,11 @@ public class PlatformMovingZ : MonoBehaviour {
         {
             if (transform.position.z < endpos.z)
             {
-                dir = 2;
+                dir = 1;
             }
             else if (transform.position.z > startpos.z)
             {
-                dir = 1;
+                dir = 2;
             }
         }
         if (dir == 1)

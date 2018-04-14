@@ -15,7 +15,7 @@ public class Bridge : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate()
     {
-        if (locks==1)
+        if (locks == 1)
         {
             Vector3 vec = targetpos;
             transform.position = Vector3.Lerp(transform.position, vec, smoothing * Time.deltaTime);
