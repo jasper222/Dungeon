@@ -6,10 +6,20 @@ public class ItemManage : MonoBehaviour {
 
     public static bool PassOrReStart = true;
 
+    #region ItemOfStage4
+    public static bool healthbox_Stage4 = true;
+    #endregion
     public static void LoadItemStage4()
     {
-        Object HealthBox = Resources.Load("Perfabs/HealthBox", typeof(GameObject));
-        GameObject healthbox = Instantiate(HealthBox) as GameObject;
-        healthbox.transform.position = new Vector3(28f, 18f, 21f);
+        if(healthbox_Stage4 || PassOrReStart)
+        {
+            Object HealthBox = Resources.Load("Perfabs/HealthBox", typeof(GameObject));
+            GameObject healthbox = Instantiate(HealthBox) as GameObject;
+            healthbox.transform.position = new Vector3(28f, 18f, 21f);
+            healthbox.name = "healthbox_Stage4";
+        }
+        
     }
+
+
 }
