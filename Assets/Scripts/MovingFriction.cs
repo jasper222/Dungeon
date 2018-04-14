@@ -7,14 +7,14 @@ public class MovingFriction : MonoBehaviour {
     private int flag;
     private Rigidbody PlayerRg3d;
     private Rigidbody thisRg3d;
-    // Use this for initialization
+
     void Start () {
         flag = 0;
         player = GameObject.Find("Player");
         thisRg3d = GetComponent<Rigidbody>();
     }
 	
-	// Update is called once per frame
+
 	void FixedUpdate () {
         if (player == null)
         {

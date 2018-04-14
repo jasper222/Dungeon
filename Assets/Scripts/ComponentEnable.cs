@@ -6,13 +6,6 @@ public class ComponentEnable : MonoBehaviour {
 
     private bool LockKey = false;
     
-    
-	// Use this for initialization
-	void Start () {
-        
-    }
-	
-	// Update is called once per frame
 	void Update () {
 		if(LockKey)
         {

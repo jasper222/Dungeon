@@ -33,7 +33,8 @@ public class HitStage2to4 : MonoBehaviour {
             this.gameObject.SetActive(false);
 
             GameObject disappear = GameObject.Find("stone_3");
-            disappear.SetActive(false);
+            Transform disrg3d = disappear.GetComponent<Transform>();
+            disrg3d.Rotate(new Vector3(0f, 0f, 90f));
         }
         if (Hitname == "Bridge1")
         {
