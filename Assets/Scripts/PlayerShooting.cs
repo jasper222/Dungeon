@@ -69,7 +69,7 @@ public class PlayerShooting : MonoBehaviour {
             gunLine.SetPosition(1, shootHit.point);
             if (shootHit.collider.CompareTag("Hit"))
             {
-                //if(SceneManager.GetActiveScene().name == "Stage2" || SceneManager.GetActiveScene().name == "Stage3")
+                if(SceneManager.GetActiveScene().name == "Stage2" || SceneManager.GetActiveScene().name == "Stage3")
                 {
                     HitStage2to4 obj = shootHit.collider.GetComponent<HitStage2to4>();
                     obj.Hitting();
@@ -82,12 +82,16 @@ public class PlayerShooting : MonoBehaviour {
             }
             if (shootHit.collider.name.Contains("enemy"))
             {
-                //if(SceneManager.GetActiveScene().name == "Stage2" || SceneManager.GetActiveScene().name == "Stage3")
+                if(SceneManager.GetActiveScene().name == "Stage2" || SceneManager.GetActiveScene().name == "Stage3")
                 {
                     HitStage2to4 obj = shootHit.collider.GetComponent<HitStage2to4>();
                     obj.Enemy_hit();
                 }
-                
+                if (SceneManager.GetActiveScene().name == "Stage5" || SceneManager.GetActiveScene().name == "Stage6")
+                {
+                    HitStage5to7 obj = shootHit.collider.GetComponent<HitStage5to7>();
+                    obj.Enemy_hit();
+                }
             }
            
             

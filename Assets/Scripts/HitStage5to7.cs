@@ -7,15 +7,6 @@ public class HitStage5to7 : MonoBehaviour {
     public int health;
     Rigidbody rig;
     
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void Hitting()
     {
@@ -34,6 +25,19 @@ public class HitStage5to7 : MonoBehaviour {
             GameObject raytrans_2 = GameObject.Find("Bullettransmitter_2");
             Raytransmitter ray_2 = raytrans_2.GetComponent<Raytransmitter>();
             ray_2.model = 1;
+        }
+    }
+
+    public void Enemy_hit()
+    {
+        Hitname = this.name;
+        if (Hitname.Contains("enemy"))
+        {
+            health--;
+        }
+        if (health == 0)
+        {
+            this.gameObject.SetActive(false);
         }
     }
 }
