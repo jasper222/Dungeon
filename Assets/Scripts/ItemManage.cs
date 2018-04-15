@@ -13,6 +13,7 @@ public class ItemManage : MonoBehaviour {
     {
         if(healthbox_Stage4 || PassOrReStart)
         {
+            healthbox_Stage4 = true;
             Object HealthBox = Resources.Load("Perfabs/HealthBox", typeof(GameObject));
             GameObject healthbox = Instantiate(HealthBox) as GameObject;
             healthbox.transform.position = new Vector3(28f, 18f, 21f);
