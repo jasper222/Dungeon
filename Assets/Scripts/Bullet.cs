@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    private float timer = 5f;
+    private int live = 1;
+    private float timer = 0.3f;
 	// Use this for initialization
 	void Start () {
         
@@ -12,6 +13,15 @@ public class Bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (live==0)
+        {
+            timer -= Time.deltaTime;
+        }
+        if (timer<=0)
+        {
+            this.gameObject.SetActive(false);
+            Destroy(this, Time.deltaTime);
+        }
         //timer -= Time.deltaTime;
         //if (timer<=0)
         //{
@@ -21,12 +31,10 @@ public class Bullet : MonoBehaviour {
 	}
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            this.gameObject.SetActive(false);
-            Destroy(this);
-        }
+        live = 0;
+
     }
+
     public void Destroyself(float t)
     {
 
