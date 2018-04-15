@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour {
     private GameObject Player;
     public float smoothing = 5f;
 
-    Vector3 offset = new Vector3(-0.8f, 9f, -5f);
+    public Vector3 offset = new Vector3(-0.8f, 9f, -5f);
 
     void Start () {
         Player = GameObject.Find("Player");
