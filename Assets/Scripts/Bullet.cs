@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    private float timer = 1f;
+    private float timer = 5f;
 	// Use this for initialization
 	void Start () {
         
@@ -29,6 +29,7 @@ public class Bullet : MonoBehaviour {
     }
     public void Destroyself(float t)
     {
+
         Destroy(this, t);
     }
 }
