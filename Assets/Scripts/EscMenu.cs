@@ -10,7 +10,7 @@ public class EscMenu : MonoBehaviour {
 
 	void Update ()
     {
-		if(Input.GetKey(KeyCode.Escape))
+		if(Input.GetKey(KeyCode.Escape) && HealthManage.LiveOrNot)
         {
             if(GameManage.IsPause)
             {
