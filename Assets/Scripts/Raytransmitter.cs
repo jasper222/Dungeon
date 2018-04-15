@@ -59,6 +59,8 @@ public class Raytransmitter : MonoBehaviour {
         bullet.name = "bullet_1";
         rig = bullet.GetComponent<Rigidbody>();
         rig.velocity = dir * speed;
+        Bullet obj = bullet.GetComponent<Bullet>();
+        obj.Destroyself(5);
 
     }
 
