@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void PlayerDie()
+    public void PlayerDie()
     {
         if(HealthManage.LiveOrNot)
         {
