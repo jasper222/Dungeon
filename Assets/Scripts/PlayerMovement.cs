@@ -125,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(HealthManage.LiveOrNot)
         {
+            tag = null;
             HealthManage.LiveOrNot = false;
             HealthManage.PlayerHealth--;
             StartCoroutine(ReloadScene());
