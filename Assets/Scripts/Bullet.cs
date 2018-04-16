@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     private int live = 1;
-    private float timer = 0.3f;
+    private float timer = 0.1f;
 	// Use this for initialization
 	void Start () {
         
