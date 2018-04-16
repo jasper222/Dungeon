@@ -546,8 +546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7cf2ee32394764b8d0353956425396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothing: 5
-  dis: 7
+  smoothing: 10
+  dis: 10
 --- !u!81 &64257732
 AudioListener:
   m_ObjectHideFlags: 0
@@ -847,7 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb2f23860c8968429d94dc0785d52b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: {x: 21, y: -11, z: 35}
+  point: {x: 21, y: -10, z: 30}
 --- !u!114 &198633234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4490,6 +4490,10 @@ Prefab:
         type: 2}
       propertyPath: OpenRay
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280492551535606, guid: ab63f35d4005d6e43bdb6ef7a3c3829b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab63f35d4005d6e43bdb6ef7a3c3829b, type: 2}
