@@ -74,6 +74,11 @@ public class PlayerShooting : MonoBehaviour {
                     HitStage2to4 obj = shootHit.collider.GetComponent<HitStage2to4>();
                     obj.Hitting();
                 } 
+                if (SceneManager.GetActiveScene().name == "Stage5" || SceneManager.GetActiveScene().name == "Stage6")
+                {
+                    HitStage5to7 obj = shootHit.collider.GetComponent<HitStage5to7>();
+                    obj.Hitting();
+                }
             }
             if (shootHit.collider.name.Contains("enemy"))
             {
@@ -82,7 +87,11 @@ public class PlayerShooting : MonoBehaviour {
                     HitStage2to4 obj = shootHit.collider.GetComponent<HitStage2to4>();
                     obj.Enemy_hit();
                 }
-                
+                if (SceneManager.GetActiveScene().name == "Stage5" || SceneManager.GetActiveScene().name == "Stage6")
+                {
+                    HitStage5to7 obj = shootHit.collider.GetComponent<HitStage5to7>();
+                    obj.Enemy_hit();
+                }
             }
            
             

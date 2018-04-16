@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Tp : MonoBehaviour {
-    public string loadName;
     public string NextStage;
 	
     void OnTriggerEnter(Collider other)

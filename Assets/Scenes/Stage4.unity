@@ -1628,6 +1628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothing: 5
+  offset: {x: -0.8, y: 9, z: -5}
 --- !u!4 &675224054 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4923304834208424, guid: 13b102f90ef2d9547b0b20dab65ee793,
@@ -1824,7 +1825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb2f23860c8968429d94dc0785d52b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: {x: 28, y: 0.65, z: 18}
+  point: {x: 0, y: 0.65, z: 0}
 --- !u!4 &810354052
 Transform:
   m_ObjectHideFlags: 0
@@ -4339,6 +4340,11 @@ Prefab:
     - target: {fileID: 4422730413776244, guid: b3cbbcb0e63c226408db2da0f160bcae, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114957271020450894, guid: b3cbbcb0e63c226408db2da0f160bcae,
+        type: 2}
+      propertyPath: NextStage
+      value: Stage5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b3cbbcb0e63c226408db2da0f160bcae, type: 2}
