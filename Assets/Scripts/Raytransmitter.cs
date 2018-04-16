@@ -45,7 +45,7 @@ public class Raytransmitter : MonoBehaviour {
             Shoot();
             DisableEffects();
         }
-        if (timer >= OpenRay && model == 3)
+        if (timer >= Interval && model == 3)
         {
             Shoot2();
             DisableEffects();
