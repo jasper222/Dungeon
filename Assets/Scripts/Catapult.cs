@@ -11,5 +11,6 @@ public class Catapult : MonoBehaviour {
         Rigidbody playerRg3d;
         playerRg3d = collision.gameObject.GetComponent<Rigidbody>();
         playerRg3d.velocity += CatapultSpeed;
+
     }
 }

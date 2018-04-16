@@ -37,12 +37,15 @@ public class Raytransmitter : MonoBehaviour {
         }
         if (timer>=Interval/2 && model==0)
         {
-
             Aiming();
         }
         if (timer>=Interval && model==0)
         {
             DisableEffects();
+        }
+        if(model == 2)
+        {
+            Aiming();
         }
     }
     void DisableEffects()
