@@ -35,6 +35,11 @@ public class Raytransmitter : MonoBehaviour {
             Shoot();
             DisableEffects();
         }
+        if (timer >= Interval && model == 3)
+        {
+            Shoot2();
+            DisableEffects();
+        }
         if (timer>=Interval/2 && model==0)
         {
             Aiming();
@@ -61,6 +66,20 @@ public class Raytransmitter : MonoBehaviour {
         bullet.AddComponent<Bullet>();
         bullet.transform.position = transform.position;
         bullet.name = "bullet_1";
+        rig = bullet.GetComponent<Rigidbody>();
+        rig.velocity = dir * speed;
+        Bullet obj = bullet.GetComponent<Bullet>();
+        obj.Destroyself(5);
+
+    }
+
+    void Shoot2()
+    {
+        Object Bullet = Resources.Load("Perfabs/Bullet2", typeof(GameObject));
+        GameObject bullet = Instantiate(Bullet) as GameObject;
+        bullet.AddComponent<Bullet>();
+        bullet.transform.position = transform.position;
+        bullet.name = "bullet_2";
         rig = bullet.GetComponent<Rigidbody>();
         rig.velocity = dir * speed;
         Bullet obj = bullet.GetComponent<Bullet>();
