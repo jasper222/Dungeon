@@ -75,7 +75,7 @@ public class Raytransmitter : MonoBehaviour {
         Object Bullet = Resources.Load("Perfabs/Bullet", typeof(GameObject));
         GameObject bullet = Instantiate(Bullet) as GameObject;
         bullet.AddComponent<Bullet>();
-        bullet.transform.position = transform.position;
+        bullet.transform.position = transform.position + dir.normalized * 1.5f;
         bullet.name = "bullet_1";
         rig = bullet.GetComponent<Rigidbody>();
         rig.velocity = dir * speed;
