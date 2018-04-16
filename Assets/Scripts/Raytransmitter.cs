@@ -54,7 +54,7 @@ public class Raytransmitter : MonoBehaviour {
         {
             Aiming();
         }
-        if (timer>= OpenRay && model==0)
+        if (timer>= OpenRay && model==0 && flag==0)
         {
             DisableEffects();
         }
