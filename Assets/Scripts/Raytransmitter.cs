@@ -45,7 +45,7 @@ public class Raytransmitter : MonoBehaviour {
             Shoot();
             DisableEffects();
         }
-        if (timer >= OpenRay && model == 3)
+        if (timer >= Interval && model == 3)
         {
             Shoot2();
             DisableEffects();
@@ -54,7 +54,7 @@ public class Raytransmitter : MonoBehaviour {
         {
             Aiming();
         }
-        if (timer>= OpenRay && model==0)
+        if (timer>= OpenRay && model==0 && flag==0)
         {
             DisableEffects();
         }
@@ -89,7 +89,7 @@ public class Raytransmitter : MonoBehaviour {
         Object Bullet = Resources.Load("Perfabs/Bullet2", typeof(GameObject));
         GameObject bullet = Instantiate(Bullet) as GameObject;
         bullet.AddComponent<Bullet>();
-        bullet.transform.position = transform.position;
+        bullet.transform.position = transform.position + dir.normalized * 1.5f;
         bullet.name = "bullet_2";
         rig = bullet.GetComponent<Rigidbody>();
         rig.velocity = dir * speed;
