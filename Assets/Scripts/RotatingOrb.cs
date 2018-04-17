@@ -10,7 +10,6 @@ public class RotatingOrb : MonoBehaviour {
     public static int count = 1;                  //声明一个量记录到目标角度需要进行旋转RotateAngle度的个数
                                         // 由于每次旋转转  90(RotateAngle）度，所以从（0，0，0）到（0，180，0）需要旋转两个 90(RotateAngle) 度
     public static bool RotateController = false;
-    public static bool Trigger1 = true;
 
 
     private void Start()
